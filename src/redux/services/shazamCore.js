@@ -7,16 +7,17 @@ export const shazamCoreApi = createApi({
     prepareHeaders: (headers) => {
       headers.set(
         "X-RapidAPI-Key",
-        "cc39c109cbmshf8681a79090d758p12334bjsn450f20e24d8d"
+        "7e6bcad31fmsh4f0d3a7316d8a51p14d6cejsnadcfe204a07a"
       );
       return headers;
     },
   }),
   endpoints: (builder) => ({
     getTopCharts: builder.query({ query: () => "/charts/world" }),
-    getSongDetails: builder.query({query: (songid) => `/tracks/details?track_id=${songid}`}),
-    getSongRelated: builder.query({query: (songid) => `/tracks/related?track_id=${songid}`}),
+    getSongDetails: builder.query({query: ({songid}) => `/tracks/details?track_id=${songid}`}),
+    getSongRelated: builder.query({query: ({songid}) => `/tracks/related?track_id=${songid}`}),
+    getArtistDetails: builder.query({query: (artistId) => `/artists?/details?artist_id=${artistId}`}),
   }),
 });
 
-export const { useGetTopChartsQuery, useGetSongDetailsQuery, useGetSongRelatedQuery } = shazamCoreApi;
+export const { useGetTopChartsQuery, useGetSongDetailsQuery, useGetSongRelatedQuery, useGetArtistDetailsQuery } = shazamCoreApi;
